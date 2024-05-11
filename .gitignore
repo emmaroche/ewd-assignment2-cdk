@@ -6,5 +6,6 @@ node_modules
 cdk.out
 .DS_Store
 site/
+sitebackup/
 env.ts
 temp.md
