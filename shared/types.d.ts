@@ -17,7 +17,7 @@ export type SignUpBody = {
 
   export type MovieReviews = {
     movieId: number;
-    reviewerName: string;
+    movieName: string;
     reviewDate: string;
     content: string;
     // Reference I used for setting range on the rating between 1 - 5: https://stackoverflow.com/questions/39494689/is-it-possible-to-restrict-number-to-a-certain-range
@@ -26,7 +26,7 @@ export type SignUpBody = {
   // Used to validate the query string og HTTP Get requests
   export type MovieReviewsQueryParams = {
     movieId: string;
-    reviewerName?: string;
+    movieName?: string;
     reviewDate?: string;
   }
   

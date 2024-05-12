@@ -63,13 +63,13 @@ export class APIApp extends Construct {
 
     // Existing code
     const moviesEndpoint2 = appApi.root.addResource("reviews");
-    const movieReviewsByReviewerNameEndpoint = moviesEndpoint2.addResource("{reviewerName}");
+    const movieReviewsByMovieNameEndpoint = moviesEndpoint2.addResource("{movieName}");
 
     // Add this line
-    const movieReviewsByReviewerNameAndMovieIdEndpoint = movieReviewsByReviewerNameEndpoint.addResource("{movieId}");
+    const movieReviewsByMovieNameAndMovieIdEndpoint = movieReviewsByMovieNameEndpoint.addResource("{movieId}");
 
     // Add a GET method to the new endpoint
-    movieReviewsByReviewerNameAndMovieIdEndpoint.addMethod(
+    movieReviewsByMovieNameAndMovieIdEndpoint.addMethod(
       "GET",
       new apig.LambdaIntegration(getMovieReviewsFn, { proxy: true })
     );

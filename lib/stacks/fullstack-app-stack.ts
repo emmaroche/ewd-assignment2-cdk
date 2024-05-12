@@ -35,7 +35,7 @@ export class InfraStack extends Stack {
     const reviewsTable = new dynamodb.Table(this, "MovieReviews", {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey: { name: "movieId", type: dynamodb.AttributeType.NUMBER },
-      sortKey: { name: "reviewerName", type: dynamodb.AttributeType.STRING },
+      sortKey: { name: "movieName", type: dynamodb.AttributeType.STRING },
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       tableName: "MovieReviews",
     });

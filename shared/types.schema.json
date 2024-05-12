@@ -7,7 +7,7 @@
                 "movieId": {
                     "type": "number"
                 },
-                "reviewerName": {
+                "movieName": {
                     "type": "string"
                 },
                 "reviewDate": {
@@ -22,7 +22,7 @@
             },
             "required": [
                 "movieId",
-                "reviewerName",
+                "movieName",
                 "reviewDate",
                 "content",
                 "rating"
@@ -35,7 +35,7 @@
                 "movieId": {
                     "type": "string"
                 },
-                "reviewerName": {
+                "movieName": {
                     "type": "string"
                 },
                 "reviewDate": {
