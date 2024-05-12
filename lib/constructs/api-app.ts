@@ -31,6 +31,7 @@ export class APIApp extends Construct {
 
     this.apiUrl = appApi.url;
 
+    // Functions
     const getMovieReviewsFn = new lambdanode.NodejsFunction(this, "GetMovieReviewsFn", {
       architecture: lambda.Architecture.ARM_64,
       runtime: lambda.Runtime.NODEJS_16_X,
@@ -55,29 +56,23 @@ export class APIApp extends Construct {
       },
     });
 
-
     // Permissions 
     props.tableName.grantReadData(getMovieReviewsFn);
     props.tableName.grantReadData(getAllMovieReviewsFn);
 
-
-    // Existing code
+    // Endpoints
     const moviesEndpoint2 = appApi.root.addResource("reviews");
     const movieReviewsByMovieNameEndpoint = moviesEndpoint2.addResource("{movieName}");
 
-    // Add this line
     const movieReviewsByMovieNameAndMovieIdEndpoint = movieReviewsByMovieNameEndpoint.addResource("{movieId}");
 
-    // Add a GET method to the new endpoint
     movieReviewsByMovieNameAndMovieIdEndpoint.addMethod(
       "GET",
       new apig.LambdaIntegration(getMovieReviewsFn, { proxy: true })
     );
 
-    // Existing code
     const reviewsEndpoint = appApi.root.addResource("reviews2");
 
-    // Add a GET method to the reviews endpoint
     reviewsEndpoint.addMethod(
       "GET",
       new apig.LambdaIntegration(getAllMovieReviewsFn, { proxy: true })
